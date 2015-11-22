@@ -18,7 +18,7 @@
 #
 ##############################################################################
 {
-    'name': 'Brodo - Inventory List Report (Aeroo)',
+    'name': 'Inventory Slip Printed Form (Aeroo)',
     'version': '1.0',
     'author': 'OpenSynergy Indonesia',
     'website': 'https://opensynergy-indonesia.com',
