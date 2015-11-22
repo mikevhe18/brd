@@ -51,7 +51,7 @@ class Parser(report_sxw.rml_parse):
                 'moves': [],
             }
             criteria = [
-                ('picking_id', '=', picking_id), 
+                ('picking_id', '=', picking_id),
                 ('product_id.product_tmpl_id', '=', template_id)
             ]
             move_ids = obj_move.search(self.cr, self.uid, criteria)
