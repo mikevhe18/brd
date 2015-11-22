@@ -1,21 +1,21 @@
 # -*- encoding: utf-8 -*-
 ##############################################################################
-# 
-#    Author : Andhitia Rama, Michael Viriyananda, Nurazmi
-#    Copyright (C) 2015 OpenSynergy Indonesia
 #
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
+# Author : Andhitia Rama, Michael Viriyananda, Nurazmi
+# Copyright (C) 2015 OpenSynergy Indonesia
 #
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
@@ -37,7 +37,7 @@ class Parser(report_sxw.rml_parse):
         # picking = obj_picking.browse(self.cr, self.uid, [picking_id])[0]
         strSQL = """
                 SELECT DISTINCT b.product_tmpl_id
-                FROM stock_move AS a 
+                FROM stock_move AS a
                 JOIN product_product AS b ON a.product_id = b.id
                 WHERE a.picking_id = %s
                 """ % (picking_id)
@@ -50,16 +50,19 @@ class Parser(report_sxw.rml_parse):
                 'template_name': template.name,
                 'moves': [],
             }
-            criteria = [('picking_id','=', picking_id),('product_id.product_tmpl_id','=', template_id)]
+            criteria = [
+                ('picking_id', '=', picking_id), 
+                ('product_id.product_tmpl_id', '=', template_id)
+            ]
             move_ids = obj_move.search(self.cr, self.uid, criteria)
             no = 1
             for move in obj_move.browse(self.cr, self.uid, move_ids):
                 dict_2 = {
-                        'no': no,
-                        'product_name': move.product_id.display_name,
-                        'uom': move.product_uom.name,
-                        'qty': move.product_uom_qty,
-                        }
+                    'no': no,
+                    'product_name': move.product_id.display_name,
+                    'uom': move.product_uom.name,
+                    'qty': move.product_uom_qty,
+                }
                 dict_1['moves'].append(dict_2)
                 no += 1
             self.lst_product_template.append(dict_1)
