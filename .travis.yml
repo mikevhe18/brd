@@ -75,7 +75,7 @@ install:
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-genshi; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-cairo; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install libreoffice-script-provider-python; fi
-  - if [[ ${TESTS} == "1" ]]; then
+  # - if [[ ${TESTS} == "1" ]]; then
   - if [[ ${TESTS} == "1" ]]; then git clone https://github.com/aeroo/aeroolib.git; fi
   - if [[ ${TESTS} == "1" ]]; then cd aeroolib; fi
   - if [[ ${TESTS} == "1" ]]; then sudo python setup.py install; fi
