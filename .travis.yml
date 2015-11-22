@@ -78,7 +78,7 @@ install:
   # - if [[ ${TESTS} == "1" ]]; then
   - if [[ ${TESTS} == "1" ]]; then git clone https://github.com/aeroo/aeroolib.git; fi
   - if [[ ${TESTS} == "1" ]]; then cd aeroolib; fi
-  - if [[ ${TESTS} == "1" ]]; then sudo python setup.py install; fi
+  - if [[ ${TESTS} == "1" ]]; then sudo python ./setup.py install; fi
   # - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
   # - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
   # - travis_install_nightly
