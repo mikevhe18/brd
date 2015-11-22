@@ -23,6 +23,7 @@
     'author': 'OpenSynergy Indonesia',
     'website': 'https://opensynergy-indonesia.com',
     'depends': ['stock'],
+    'data': ['reports/report_stock_picking.xml'],
     'installable': True,
     'license': 'AGPL-3',
 }
