@@ -52,7 +52,7 @@ env:
   # - TRANSIFEX_TEAM=
 
   matrix:
-  # - LINT_CHECK="1"
+  - LINT_CHECK="1"
   # - TRANSIFEX="1"
   - TESTS="1" ODOO_REPO="odoo/odoo"
   # - TESTS="1" ODOO_REPO="OCA/OCB"
@@ -78,7 +78,6 @@ install:
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-cups; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-openoffice; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install libreoffice-script-provider-python; fi
-  # - if [[ ${TESTS} == "1" ]]; then
   - if [[ ${TESTS} == "1" ]]; then git clone https://github.com/aeroo/aeroolib.git; fi
   - if [[ ${TESTS} == "1" ]]; then cd aeroolib; fi
   - if [[ ${TESTS} == "1" ]]; then sudo python ./setup.py install; fi
