@@ -22,7 +22,7 @@
     'version': '1.0',
     'author': 'OpenSynergy Indonesia',
     'website': 'https://opensynergy-indonesia.com',
-    'depends': ['stock'],
+    'depends': ['stock','report_aeroo'],
     'data': ['reports/report_stock_picking.xml'],
     'installable': True,
     'license': 'AGPL-3',
