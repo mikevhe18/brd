@@ -75,6 +75,7 @@ install:
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-genshi; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-cairo; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-uno; fi
+  - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-cups fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install python-openoffice; fi
   - if [[ ${TESTS} == "1" ]]; then sudo apt-get -qy install libreoffice-script-provider-python; fi
   # - if [[ ${TESTS} == "1" ]]; then
