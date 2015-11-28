@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+<data>    
+    <record id="report_inventorySlipPdf" model="ir.actions.report.xml">
+        <field name="name">Inventory Slip PDF</field>
+        <field name="type">ir.actions.report.xml</field>
+        <field name="model">stock.picking</field>
+        <field name="report_name">inventory_slip_pdf</field>
+        <field name="report_type">aeroo</field>
+        <field name="in_format">oo-odt</field>
+		<field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
+        <field name="tml_source">file</field>
+        <field name="report_rml">brd_aeroo_inventory_slip/reports/inventory_slip.odt</field>
+        <field name="parser_state">loc</field>
+        <field name="parser_loc">brd_aeroo_inventory_slip/reports/inventory_slip.py</field>
+    </record>    
+    
+    <record id="actBinding_inventorySlipPdf" model="ir.values">
+        <field name="name">Inventory Slip</field>
+        <field name="key2">client_print_multi</field>
+        <field name="key">action</field>
+        <field name="model">stock.picking</field>
+        <field name="value" eval="'ir.actions.report.xml,'+str(report_inventorySlipPdf)"/>
+        <field name="isobject" eval="True"/>
+        <field name="replace" eval="True"/>
+    </record>
+
+ 
+
+</data>
+</openerp>
+
