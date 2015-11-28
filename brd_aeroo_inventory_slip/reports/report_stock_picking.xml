@@ -11,7 +11,7 @@
 		<field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
         <field name="tml_source">file</field>
         <field name="report_rml">brd_aeroo_inventory_slip/reports/inventory_slip.odt</field>
-        <field name="parser_state">file</field>
+        <field name="parser_state">loc</field>
         <field name="parser_loc">brd_aeroo_inventory_slip/reports/inventory_slip.py</field>
     </record>    
     
