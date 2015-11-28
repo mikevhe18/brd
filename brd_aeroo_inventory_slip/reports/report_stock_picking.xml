@@ -8,7 +8,7 @@
         <field name="report_name">inventory_slip_pdf</field>
         <field name="report_type">aeroo</field>
         <field name="in_format">oo-odt</field>
-		<field name="out_format" ref="report_aeroo_ooo.report_mimetypes_pdf_odt"/>
+		<field name="out_format" ref="report_aeroo.report_mimetypes_pdf_odt"/>
         <field name="tml_source">file</field>
         <field name="report_rml">brd_aeroo_inventory_slip/reports/inventory_slip.odt</field>
         <field name="parser_state">file</field>
