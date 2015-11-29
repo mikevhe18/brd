@@ -27,7 +27,9 @@ class Parser(rml_parse):
     def __init__(self, cr, uid, name, context):
         super(Parser, self).__init__(cr, uid, name, context)
         self.data_list = []
-        self.localcontext.update({'get_address': self.get_address})
+        self.localcontext.update({
+            'get_product_list': self.get_product_template
+        })
 
     def get_product_template(self):
         # obj_picking = self.pool.get('stock.picking')
