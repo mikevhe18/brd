@@ -5,7 +5,7 @@
     <t t-extend="PosTicket" >
         <t t-jquery=".pos-sale-ticket" t-operation="replace"> 
             <div class="pos-sale-ticket">
-                <div id="company_logo" style="text-align:center;"><img t-att-src="'data:image/png;base64,'+ widget.pos.company.logo" height="150px" width="150px"/></div>
+                <div id="company_logo" style="text-align:center;"><img t-att-src="'data:image/png;base64,'+ widget.pos.company.logo" height="40%" width="40%"/></div>
                 <div class="pos-center-align">
                     <strong><t t-esc="widget.pos.company.name"/></strong><br />
                 </div>
