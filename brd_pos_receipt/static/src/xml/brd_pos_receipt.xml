@@ -11,15 +11,15 @@
                 </div>
                 <hr/>
                 <div class="pos-center-align">
-                    <t t-esc="widget.pos.shop.partner_id.name || ''"/><br />
-                    <t t-esc="widget.pos.shop.partner_id.address2 || ''"/><br />
+                    <t t-esc="widget.pos.partner_location.street || ''"/><br />
+                    <t t-esc="widget.pos.partner_location.street2 || ''"/><br />
+                    <t t-esc="widget.pos.partner_location.city + ' - ' + widget.pos.state.name || ''" />
                 </div>
                 <strong><hr/></strong>
                 Date Time: <t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
                     Date.CultureInfo.formatPatterns.longTime)"/> 
                 Transaction: <t t-esc="order.get('name')"/><br/>
                 Cashier: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
-                Shop: <t t-esc="widget.pos.shop.name"/><br />
                 <hr />
                 <table>
                     <colgroup>
