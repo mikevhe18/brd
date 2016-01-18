@@ -92,7 +92,5 @@ function brd_pos_receipt(instance, module){
         var module = instance.point_of_sale;
 
         brd_pos_receipt(instance, module);
-
-        //$('<link rel="stylesheet" href="/pos_ticket_custom/static/src/css/pos.css"/>').appendTo($("head"))
     }
 })()

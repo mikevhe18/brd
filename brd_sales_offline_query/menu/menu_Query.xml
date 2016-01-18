@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_pos_details" 
+            name="Sales Offline Query"
+            icon="STOCK_PRINT" 
+            parent="point_of_sale.menu_point_rep" 
+            action="waction_brd_salesOfflineQuery"
+            sequence="7" 
+        />
+
+    </data>
+</openerp>
