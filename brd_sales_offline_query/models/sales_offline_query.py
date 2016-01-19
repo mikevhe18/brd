@@ -60,26 +60,24 @@ class SalesOfflineQuery(models.Model):
                         A.price_unit AS price_unit,
                         (0.1 * A.price_subtotal) AS taxes,
                         A.price_subtotal AS amount,
-                        array_to_string(
-                            array_agg(F.name), ', '
-                        ) AS payment_method,
-                        B.date_order AS date_order
+                        B.date_order AS date_order,
+                        E.payment_method
                 FROM	pos_order_line AS A
                 JOIN	pos_order AS B ON B.id=A.order_id
                 JOIN	pos_session AS C ON B.session_id=C.id
                 JOIN	pos_config AS D ON C.config_id=D.id
-                JOIN	account_bank_statement AS E ON C.id=E.pos_session_id
-                JOIN	account_journal AS F ON E.journal_id=F.id
-                GROUP BY    A.order_id,
-                            order_name,
-                            pos_name,
-                            session_name,
-                            product_id,
-                            qty,
-                            price_unit,
-                            amount,
-                            B.user_id,
-                            date_order
+                JOIN	(
+                    SELECT 	A1.id,
+                            array_to_string(
+                                array_agg(D1.name), ', '
+                            ) AS payment_method
+                    FROM 	pos_order A1
+                    JOIN	pos_session B1 ON A1.session_id=B1.id
+                    JOIN	account_bank_statement C1 ON C1.pos_session_id=B1.id
+                    JOIN	account_journal D1 ON C1.journal_id=D1.id
+                    GROUP BY A1.id
+                    ORDER BY A1.id
+                ) AS E ON A.order_id=E.id
                 ORDER BY A.order_id, B.date_order)
         """ % {'table': self._table}
 
