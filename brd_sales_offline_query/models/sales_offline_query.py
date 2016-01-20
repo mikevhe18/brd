@@ -68,12 +68,13 @@ class SalesOfflineQuery(models.Model):
                 JOIN	pos_config AS D ON C.config_id=D.id
                 JOIN	(
                     SELECT 	A1.id,
-                            array_to_string(
-                                array_agg(D1.name), ', '
-                            ) AS payment_method
+                        array_to_string(
+                        array_agg(D1.name), ', '
+                        ) AS payment_method
                     FROM 	pos_order A1
-                    JOIN	pos_session B1 ON A1.session_id=B1.id
-                    JOIN	account_bank_statement C1 ON C1.pos_session_id=B1.id
+                    JOIN	account_bank_statement_line B1
+                        ON B1.pos_statement_id=A1.id
+                    JOIN	account_bank_statement C1 ON B1.statement_id=C1.id
                     JOIN	account_journal D1 ON C1.journal_id=D1.id
                     GROUP BY A1.id
                     ORDER BY A1.id
