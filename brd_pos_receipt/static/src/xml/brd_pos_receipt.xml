@@ -10,11 +10,42 @@
                     <strong><t t-esc="widget.pos.company.name"/></strong><br />
                 </div>
                 <hr/>
+                
                 <div class="pos-center-align">
-                    <t t-esc="widget.pos.partner_location.street || ''"/><br />
-                    <t t-esc="widget.pos.partner_location.street2 || ''"/><br />
-                    <t t-esc="widget.pos.partner_location.city + ' - ' + widget.pos.state.name || ''" />
+                    <t t-if="widget.pos.partner_location">
+
+                        <t t-if="widget.pos.partner_location.street and widget.pos.partner_location.street2">
+                            <t t-esc="widget.pos.partner_location.street || ''"/><br />
+                            <t t-esc="widget.pos.partner_location.street2 || ''"/><br />
+                        </t>
+                        
+                        <t t-if="widget.pos.partner_location.street and !widget.pos.partner_location.street2">
+                            <t t-esc="widget.pos.partner_location.street || ''"/><br />
+                        </t>
+
+                        <t t-if="!widget.pos.partner_location.street and widget.pos.partner_location.street2">
+                            <t t-esc="widget.pos.partner_location.street2 || ''"/><br />
+                        </t>
+                        
+                        <t t-if="widget.pos.state">
+                            <t t-if="widget.pos.partner_location.city">
+                                <t t-esc="widget.pos.partner_location.city + ' - ' + widget.pos.state.name || ''" />
+                            </t>
+                            <t t-if="!widget.pos.partner_location.city">
+                                <t t-esc="widget.pos.state.name || ''" />
+                            </t>
+                        </t>
+                        
+                        <t t-if="!widget.pos.state">
+                            <t t-if="widget.pos.partner_location.city">
+                                <t t-esc="widget.pos.partner_location.city || ''" />
+                            </t>
+
+                        </t>
+                    </t>
+
                 </div>
+
                 <strong><hr/></strong>
                 Date Time: <t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
                     Date.CultureInfo.formatPatterns.longTime)"/> 
