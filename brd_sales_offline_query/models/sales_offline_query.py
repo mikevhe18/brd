@@ -73,7 +73,7 @@ class SalesOfflineQuery(models.Model):
     amount_incl = fields.Float(
         string='Subtotal With Tax',
         )
-    date_order = fields.Date(
+    date_order = fields.Datetime(
         string='Date Order',
         )
 
