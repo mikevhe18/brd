@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <record model="ir.ui.view" id="tree_brd_salesOfflineQuery">
+            <field name="name">Tree Sales Offline Query</field>
+            <field name="model">brd.query_sales_offline</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Offline Query" create="false" edit="false" delete="false">
+                    <field name="order_id" string="# Order"/>
+                    <field name="pos_id" string="POS"/>
+                    <field name="session_id" string="Session"/>
+                    <field name="date_order" string="Date Order"/>
+                    <field name="user_id" string="Users"/>
+                    <field name="product_id" string="Product"/>
+                    <field name="price_unit" string="Unit Price"/>
+                    <field name="qty" string="Qty"/>
+                    <field name="amount" string="Amount"/>
+                    <field name="taxes" string="Taxes"/>
+                    <field name="amount_incl" string="Amount Include Tax"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="search_brd_salesOfflineQuery">
+            <field name="name">Search Sales Offline Query</field>
+            <field name="model">brd.query_sales_offline</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Offline Query">
+                    <field name="order_id" string="# Order"/>
+                    <field name="pos_id" string="POS"/>
+                    <field name="date_order" string="Date Order"/>
+                    <field name="product_id"/>
+                    <field name="user_id"/>
+                    <field name="session_id"/>
+                    <group name="group_1" string="Group By..">
+                        <filter string="# Order" context="{'group_by':'order_id'}"/>
+                        <filter string="PoS" context="{'group_by':'pos_id'}"/>
+                        <filter string="Product" context="{'group_by':'product_id'}"/>
+                        <filter string="Session" context="{'group_by':'session_id'}"/>
+                        <filter string="Cashier" context="{'group_by':'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+		<record id="waction_brd_salesOfflineQuery" model="ir.actions.act_window">
+			<field name="name">Sales Offline Query</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">brd.query_sales_offline</field>
+			<field name="search_view_id" ref="search_brd_salesOfflineQuery"/>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>			
+		</record>
+		
+		<record id="wactionView_brd_salesOfflineQuery" model="ir.actions.act_window.view">
+			<field eval="10" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="tree_brd_salesOfflineQuery"/>
+			<field name="act_window_id" ref="waction_brd_salesOfflineQuery"/>
+		</record>
+
+    </data>
+</openerp>
