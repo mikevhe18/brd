@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <record model="ir.ui.view" id="tree_brd_salesOfflineSummaryQuery">
+            <field name="name">Tree Sales Offline Summary Query</field>
+            <field name="model">brd.query_sales_offline_summary</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Offline Summary Query" create="false" edit="false" delete="false">
+                    <field name="name"/>
+                    <field name="date_order"/>
+                    <field name="date_timestamp"/>
+                    <field name="session_id"/>
+                    <field name="pos_id"/>
+                    <field name="user_id"/>
+                    <field name="quantity"/>
+                    <field name="amount_gross" sum="Total Gross"/>
+                    <field name="amount_nett" sum="Total Nett"/>
+                    <field name="amount_taxes" sum="Total Taxes"/>
+                    <field name="amount_nett_incl" sum="Total Nett Incl. Taxes"/>
+                    <field name="amount_cost" sum="Total Cost"/>
+                    <field name="amount_profit" sum="Total Profit"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="search_brd_salesOfflineSummaryQuery">
+            <field name="name">Search Sales Offline Summary Query</field>
+            <field name="model">brd.query_sales_offline_summary</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Offline Summary Query">
+                </search>
+            </field>
+        </record>
+        
+		<record id="waction_brd_salesOfflineSummaryQuery" model="ir.actions.act_window">
+			<field name="name">Sales Offline Summary Query</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">brd.query_sales_offline_summary</field>
+			<field name="search_view_id" ref="search_brd_salesOfflineSummaryQuery"/>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>			
+		</record>
+		
+		<record id="wactionView_brd_salesOfflineSummaryQuery" model="ir.actions.act_window.view">
+			<field eval="10" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="tree_brd_salesOfflineSummaryQuery"/>
+			<field name="act_window_id" ref="waction_brd_salesOfflineSummaryQuery"/>
+		</record>
+
+    </data>
+</openerp>

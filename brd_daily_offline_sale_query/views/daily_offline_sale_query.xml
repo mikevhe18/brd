@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <record model="ir.ui.view" id="tree_brd_dailyOfflineSaleQuery">
+            <field name="name">Tree Daily Offline Sale Query</field>
+            <field name="model">brd.daily_offline_sale_query</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Offline Sale Query" create="false" edit="false" delete="false">
+                    <field name="date_order"/>
+                    <field name="pos_id"/>
+                    <field name="trx_count" sum="Total Transaction Count"/>
+                    <field name="quantity" sum="Total Quantity"/>
+                    <field name="amount_gross" sum="Total Gross"/>
+                    <field name="amount_nett" sum="Total Nett"/>
+                    <field name="amount_taxes" sum="Total Taxes"/>
+                    <field name="amount_nett_incl" sum="Total Nett Incl. Taxes"/>
+                    <field name="amount_cost" sum="Total Cost"/>
+                    <field name="amount_profit" sum="Total Profit"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="search_brd_dailyOfflineSaleQuery">
+            <field name="name">Search Daily Offline Sale Query</field>
+            <field name="model">brd.daily_offline_sale_query</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Offline Summary Query">
+                    <field name="date_order"/>
+                    <field name="pos_id"/>
+                    <group name="group_1" string="Group By">
+                        <filter string="Date" context="{'group_by':'date_order:day'}"/>
+                        <filter string="PoS" context="{'group_by':'pos_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+		<record id="waction_brd_dailyOfflineSaleQuery" model="ir.actions.act_window">
+			<field name="name">Daily Offline Sale Query</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">brd.daily_offline_sale_query</field>
+			<field name="search_view_id" ref="search_brd_dailyOfflineSaleQuery"/>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree</field>			
+		</record>
+		
+		<record id="wactionView_brd_dailyOfflineSaleQuery" model="ir.actions.act_window.view">
+			<field eval="10" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="tree_brd_dailyOfflineSaleQuery"/>
+			<field name="act_window_id" ref="waction_brd_dailyOfflineSaleQuery"/>
+		</record>
+
+    </data>
+</openerp>

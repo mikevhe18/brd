@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_dailyOfflineSaleQuery" 
+            name="Sales Summary"
+            parent="brd_pos_reporting.menu_brd_reportPosDaily" 
+            action="waction_brd_dailyOfflineSaleQuery"
+            groups="group_brd_dailyOfflineSalesSummary"
+        />
+
+    </data>
+</openerp>

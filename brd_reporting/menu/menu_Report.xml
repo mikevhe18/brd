@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_reportRoot" 
+            name="Brodo Report"
+            sequence="99"
+        />
+
+    </data>
+</openerp>

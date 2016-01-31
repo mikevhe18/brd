@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_dailyOfflineProductPerformanceQuery" 
+            name="Product Performance"
+            parent="brd_pos_reporting.menu_brd_reportPosDaily" 
+            action="waction_brd_dailyOfflineProductPerformanceQuery"
+            groups="group_brd_dailyOfflineProductPerformance"
+        />
+
+    </data>
+</openerp>
