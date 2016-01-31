@@ -4,9 +4,11 @@
 
         <menuitem 
             id="menu_brd_salesOfflineSummaryQuery" 
-            name="Sales Offline Summary"
-            parent="point_of_sale.menu_point_rep" 
+            name="Sales Summary"
+            parent="brd_pos_reporting.menu_brd_reportPosRoot" 
             action="waction_brd_salesOfflineSummaryQuery"
+            sequence="2"
+            groups="group_brd_salesOfflineSummary"
         />
 
     </data>

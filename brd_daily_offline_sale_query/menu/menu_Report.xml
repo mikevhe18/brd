@@ -4,9 +4,10 @@
 
         <menuitem 
             id="menu_brd_dailyOfflineSaleQuery" 
-            name="Daily Offline Sale"
-            parent="point_of_sale.menu_point_rep" 
+            name="Sales Summary"
+            parent="brd_pos_reporting.menu_brd_reportPosDaily" 
             action="waction_brd_dailyOfflineSaleQuery"
+            groups="group_brd_dailyOfflineSalesSummary"
         />
 
     </data>

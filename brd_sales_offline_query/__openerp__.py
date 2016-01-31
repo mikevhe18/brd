@@ -10,11 +10,13 @@
     'website': 'https://opensynergy-indonesia.com',
     'data': [
         'security/ir.model.access.csv',
+        'security/data_Groups.xml',
         'view/sales_offline_query.xml',
         'menu/menu_Query.xml'
     ],
     'depends': [
         'point_of_sale',
+        'brd_reporting',
         ],
     "installable": True,
     "application": True,

@@ -4,11 +4,11 @@
 
         <menuitem 
             id="menu_pos_details" 
-            name="Sales Offline Query"
-            icon="STOCK_PRINT" 
-            parent="point_of_sale.menu_point_rep" 
+            name="Sales Detail"
+            parent="brd_pos_reporting.menu_brd_reportPosRoot"
             action="waction_brd_salesOfflineQuery"
-            sequence="7" 
+            sequence="1" 
+            groups="group_brd_salesOfflineDetail"
         />
 
     </data>

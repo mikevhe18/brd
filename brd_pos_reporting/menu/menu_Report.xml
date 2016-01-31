@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_reportPosRoot"
+            parent="brd_reporting.menu_brd_reportRoot" 
+            name="Offline Sales"
+            sequence="1"
+        />
+        
+        <menuitem 
+            id="menu_brd_reportPosDaily"
+            parent="menu_brd_reportPosRoot" 
+            name="Daily Reports"
+            sequence="101"
+        />
+        
+        <menuitem 
+            id="menu_brd_reportPosMonthly"
+            parent="menu_brd_reportPosRoot" 
+            name="Monthly Reports"
+            sequence="102"
+        />
+        
+        <menuitem 
+            id="menu_brd_reportPosYearly"
+            parent="menu_brd_reportPosRoot" 
+            name="Yearly Reports"
+            sequence="103"
+        />
+
+    </data>
+</openerp>

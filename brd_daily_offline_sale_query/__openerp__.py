@@ -8,6 +8,7 @@
     'author': 'Andhitia Rama,OpenSynergy Indonesia',
     'website': 'https://opensynergy-indonesia.com',
     'data': [
+        'security/data_Groups.xml',
         'security/ir.model.access.csv',
         'views/daily_offline_sale_query.xml',
         'menu/menu_Report.xml',

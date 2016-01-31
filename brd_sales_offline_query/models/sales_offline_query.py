@@ -115,10 +115,10 @@ class SalesOfflineQuery(models.Model):
                         ) AS profit,
                         b.date_order AS date_order,
                         b.date_order::timestamp::date AS day_order
-                FROM	pos_order_line AS a
-                JOIN	pos_order AS b ON b.id=a.order_id
-                JOIN	pos_session AS c ON b.session_id=c.id
-                JOIN	pos_config AS d ON c.config_id=d.id
+                FROM    pos_order_line AS a
+                JOIN    pos_order AS b ON b.id=a.order_id
+                JOIN    pos_session AS c ON b.session_id=c.id
+                JOIN    pos_config AS d ON c.config_id=d.id
                 JOIN    stock_picking AS e ON b.picking_id=e.id
                 JOIN    stock_move AS f ON e.id=f.picking_id
                 JOIN    product_product AS g ON a.product_id=g.id
