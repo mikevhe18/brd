@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_dailyOfflineSaleQuery" 
+            name="Daily Offline Sale"
+            parent="point_of_sale.menu_point_rep" 
+            action="waction_brd_dailyOfflineSaleQuery"
+        />
+
+    </data>
+</openerp>

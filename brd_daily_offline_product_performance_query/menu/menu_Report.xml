@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>  
+
+        <menuitem 
+            id="menu_brd_dailyOfflineProductPerformanceQuery" 
+            name="Daily Offline Product Performance"
+            parent="point_of_sale.menu_point_rep" 
+            action="waction_brd_dailyOfflineProductPerformanceQuery"
+        />
+
+    </data>
+</openerp>

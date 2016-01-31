@@ -1,23 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Author: Michael Viriyananda
-#    Copyright 2016 OpenSynergy Indonesia
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2016 Andhitia Rama <andhitia.r@gmail.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import models, fields
 from openerp.tools import drop_view_if_exists
@@ -58,11 +41,24 @@ class SalesOfflineQuery(models.Model):
         string='Product',
         comodel_name='product.product',
         )
+    product_template_id = fields.Many2one(
+        string='Product Template',
+        comodel_name='product.template',
+        )
     qty = fields.Float(
         string='Qty',
         )
     price_unit = fields.Float(
         string='Price Unit',
+        )
+    cost_unit = fields.Float(
+        string='Cost Per Unit',
+        )
+    amount_cost = fields.Float(
+        string='Cost',
+        )
+    profit = fields.Float(
+        string='Profit/Loss',
         )
     taxes = fields.Float(
         string='Taxes',
@@ -75,6 +71,9 @@ class SalesOfflineQuery(models.Model):
         )
     date_order = fields.Datetime(
         string='Date Order',
+        )
+    day_order = fields.Date(
+        string='Day Order',
         )
 
     def _auto_init(self, cr, context=None):
@@ -90,19 +89,40 @@ class SalesOfflineQuery(models.Model):
                         b.session_id AS session_id,
                         b.user_id AS user_id,
                         a.product_id AS product_id,
+                        h.id AS product_template_id,
                         a.qty AS qty,
                         a.price_unit AS price_unit,
+                        f.price_unit AS cost_unit,
+                        (
+                            f.price_unit
+                            *
+                            a.qty
+                        ) AS amount_cost,
                         a.price_subtotal AS amount,
                         a.price_subtotal_incl AS amount_incl,
                         (
                             a.price_subtotal_incl
                             - a.price_subtotal
                         ) AS taxes,
-                        b.date_order AS date_order
+                        (
+                            a.price_subtotal
+                            -
+                            (
+                            f.price_unit
+                            *
+                            a.qty
+                            )
+                        ) AS profit,
+                        b.date_order AS date_order,
+                        b.date_order::timestamp::date AS day_order
                 FROM	pos_order_line AS a
                 JOIN	pos_order AS b ON b.id=a.order_id
                 JOIN	pos_session AS c ON b.session_id=c.id
                 JOIN	pos_config AS d ON c.config_id=d.id
+                JOIN    stock_picking AS e ON b.picking_id=e.id
+                JOIN    stock_move AS f ON e.id=f.picking_id
+                JOIN    product_product AS g ON a.product_id=g.id
+                JOIN    product_template AS h ON g.product_tmpl_id=h.id
                 ORDER BY a.order_id, b.date_order)
         """ % {'table': self._table}
 

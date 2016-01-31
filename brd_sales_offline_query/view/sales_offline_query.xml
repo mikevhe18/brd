@@ -11,10 +11,15 @@
                     <field name="pos_id" string="POS"/>
                     <field name="session_id" string="Session"/>
                     <field name="date_order" string="Date Order"/>
+                    <field name="day_order"/>
                     <field name="user_id" string="Users"/>
                     <field name="product_id" string="Product"/>
+                    <field name="product_template_id"/>
                     <field name="price_unit" string="Unit Price"/>
+                    <field name="cost_unit"/>
                     <field name="qty" string="Qty"/>
+                    <field name="amount_cost" sum="Total Cost"/>
+                    <field name="profit" sum="Total Profit/Loss"/>
                     <field name="amount" string="Amount" sum="Amount"/>
                     <field name="taxes" string="Taxes" sum="Taxes"/>
                     <field name="amount_incl" string="Amount Include Tax" sum="Amount Include Tax"/>
@@ -37,6 +42,7 @@
                         <filter string="# Order" context="{'group_by':'order_id'}"/>
                         <filter string="PoS" context="{'group_by':'pos_id'}"/>
                         <filter string="Product" context="{'group_by':'product_id'}"/>
+                        <filter string="Product Template" context="{'group_by':'product_template_id'}"/>
                         <filter string="Session" context="{'group_by':'session_id'}"/>
                         <filter string="Cashier" context="{'group_by':'user_id'}"/>
                         <filter string="Year" context="{'group_by':'date_order:year'}"/>
