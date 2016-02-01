@@ -95,14 +95,38 @@
                             <td class="pos-right-align"><strong><t t-esc="widget.format_currency(taxdetail.amount)" /></strong></td>
                         </tr>
                     </t>
-                    <tr>
-                        <td>Total Before Tax:</td>
-                        <td class="pos-right-align"><strong><t t-esc="widget.format_currency(order.getSubtotal())"/></strong></td>
-                    </tr>
-                    <tr>
-                        <td>Grand Total:</td>
-                        <td class="pos-right-align"><strong><t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/></strong></td>
-                    </tr>
+                    <t t-jquery=".pos-sale-ticket table .emph" t-operation="replace"> 
+                      <t t-if="order.wk_get_discount()">
+                        <tr class="emph">
+                            <td>Total:</td>
+                            <td class="pos-right-align">
+                                <del><t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/></del>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Global Discount:</td><td class="pos-right-align">
+                               <t t-esc="widget.format_currency(order.wk_get_discount())"/>
+                            </td>
+                        </tr>
+                         <tr class="emph">
+                            <td>Total:</td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(order.getTotalTaxIncluded()-order.wk_get_discount())"/>
+                            </td>
+                        </tr>
+                        
+                        
+                      </t>
+                      <t t-if="! order.wk_get_discount()">
+                         <tr class="emph">
+                            <td>Total:</td>
+                            <td class="pos-right-align">
+                                <t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/>
+                            </td>
+                        </tr>
+                        
+                      </t>
+                    </t>
                 </table>
                 <br />
                 <hr/>
@@ -127,6 +151,18 @@
                 </table>
                 <br/>
                 <hr/>
+                
+                <t t-jquery=".pos-sale-ticket" t-operation="append"> 
+                  <t t-if="widget.pos.config.print_note">
+                   <table>
+
+                        <tr><td>Note:</td><td class="pos-right-align">
+                           <t t-esc="order.get_order_note()"/>
+                            </td></tr>
+                    </table>
+                  </t>
+                </t>
+                
                 <strong>Syarat &amp; Ketentuan</strong>
                 <table>
                     <colgroup>
