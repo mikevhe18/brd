@@ -11,6 +11,10 @@
         'views/brd_pos_receipt_js.xml'],
     'depends': [
         'point_of_sale',
+        'pos_stock',
+        'pos_order_discount',
+        'pos_carry_bag',
+        'wk_pos_order_notes'
         ],
     'qweb': [
         'static/src/xml/brd_pos_receipt.xml',
