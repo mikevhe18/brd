@@ -97,8 +97,10 @@
 
                     <t t-foreach="order.getTaxDetails()" t-as="taxdetail">
                         <tr>
-                            <td>PPN:</td>
-                            <td class="pos-right-align"><strong><t t-esc="widget.format_currency(taxdetail.amount)" /></strong></td>
+                            <td><t t-esc="taxdetail.name"/></td>
+                            <td class="pos-right-align">
+                                <strong><t t-esc="widget.format_currency(taxdetail.amount)" /></strong>
+                            </td>
                         </tr>
                     </t>
                     <t t-jquery=".pos-sale-ticket table .emph" t-operation="replace"> 
